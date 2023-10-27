@@ -34,6 +34,7 @@ public class UtilCSV {
 			});
 			csvFile.append("\r\n");
 		});
+		UtilFile.gravarArquivo(csvFile, "./src/main/resources/static/test.csv");
 		return csvFile;
 	}
 

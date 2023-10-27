@@ -1,5 +1,7 @@
 package com.ikytus;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +29,15 @@ public class UtilsDevApplication {
 		
 		StringBuilder file;
 		file = UtilCSV.createCSV(groups);
-		System.out.println(file.toString());
+		try {
+			//caminho para salvar o arquivo / nome do arquivo
+			FileWriter writer = new FileWriter("./src/main/resources/static/test.csv");
+			writer.append(file);
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
