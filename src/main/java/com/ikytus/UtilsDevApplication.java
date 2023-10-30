@@ -1,7 +1,5 @@
 package com.ikytus;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ikytus.entities.Group;
 import com.ikytus.util.UtilCSV;
+import com.ikytus.util.UtilFile;
 
 @SpringBootApplication
 public class UtilsDevApplication {
@@ -29,15 +28,8 @@ public class UtilsDevApplication {
 		
 		StringBuilder file;
 		file = UtilCSV.createCSV(groups);
-		try {
-			//caminho para salvar o arquivo / nome do arquivo
-			FileWriter writer = new FileWriter("./src/main/resources/static/test.csv");
-			writer.append(file);
-			writer.flush();
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		UtilFile.gravarArquivo(file, "./src/main/resources/static/test.csv");
 	}
 
 }
