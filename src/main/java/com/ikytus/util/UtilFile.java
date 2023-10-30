@@ -19,15 +19,13 @@ public class UtilFile {
 		}
 	}
 	
-	public static void exportCSVFile(String data, HttpServletResponse response, String nomeFileReport)
+	public static void exportFile(byte[] relatorio, HttpServletResponse response, String nomeFileReport, String extensao)
 			throws IOException {
-		
-		byte[] relatorio = data.getBytes();
-		
+						
 		ServletOutputStream servletOutputStream = response.getOutputStream();
-		response.setContentType("application/csv");
+		response.setContentType("application/" + extensao);
 		response.setContentLength(relatorio.length);
-		response.addHeader("Content-Disposition", "attachment; filename=" + nomeFileReport + ".csv");
+		response.addHeader("Content-Disposition", "attachment; filename=" + nomeFileReport + "." + extensao);
 		servletOutputStream.write(relatorio, 0, relatorio.length);
 		servletOutputStream.flush();
 		servletOutputStream.close();

@@ -1,5 +1,6 @@
 package com.ikytus.util;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.springframework.util.StringUtils;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 public class UtilCSV {
 	private static final String DELIMITER = ";";
@@ -57,5 +60,10 @@ public class UtilCSV {
 			System.out.println("ERRO AO TENTAR OBTER O MÉTODO: " + attribut);
 		}
 		return method;
+	}
+	
+	public static void exportCSV (StringBuilder data, HttpServletResponse response, String nomeRelatorio) throws IOException {
+		byte[] relatorio = data.toString().getBytes();
+		UtilFile.exportFile(relatorio, response, "relatório_Teste", "csv");
 	}
 }
