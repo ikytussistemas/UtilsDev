@@ -29,7 +29,6 @@ public class UtilFile {
 		servletOutputStream.write(relatorio, 0, relatorio.length);
 		servletOutputStream.flush();
 		servletOutputStream.close();
-
 	}
 
 }

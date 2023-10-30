@@ -64,6 +64,6 @@ public class UtilCSV {
 	
 	public static void exportCSV (StringBuilder data, HttpServletResponse response, String nomeRelatorio) throws IOException {
 		byte[] relatorio = data.toString().getBytes();
-		UtilFile.exportFile(relatorio, response, "relatório_Teste", "csv");
+		UtilFile.exportFile(relatorio, response, nomeRelatorio, "csv");
 	}
 }
